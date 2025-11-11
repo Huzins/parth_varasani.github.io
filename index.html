@@ -61,9 +61,28 @@
     margin-top: 2rem;
     display: inline-block;
   }
+
+  #bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
+  background-color: black;
+}
+
 </style>
 </head>
 <body>
+  
+<video autoplay muted loop id="bgVideo">
+  <source src="black-hole.1920x1080.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
 
 <nav>
   <a href="index.html">Home</a>
@@ -74,7 +93,7 @@
 </nav>
 
 <main>
-  <h1>Huzins</h1>
+  <h1>Parth Varasani</h1></h1>
   <h2>PhD Student - Astrophysics & Cosmology</h2>
   <p>
     I am working in black hole physics, gravitational waves, and early universe cosmology research.
@@ -85,4 +104,5 @@
 
 </body>
 </html>
+
 
