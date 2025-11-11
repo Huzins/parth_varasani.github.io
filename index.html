@@ -32,33 +32,37 @@ body, html {
 /* Meteor styles */
 #meteor {
   position: fixed;
-  top: -30px;
-  left: -100px;
-  width: 150px;
-  height: 3px;
+  width: 80px;
+  height: 2px;
   background: linear-gradient(90deg, white, rgba(255,255,255,0));
-  box-shadow: 0 0 10px 2px white;
+  box-shadow: 0 0 6px 1px white;
   opacity: 0;
   z-index: 100;
   pointer-events: none;
-  animation: meteor-animation 5s linear infinite;
-  animation-delay: 1s;
+  transform-origin: left center;
 }
 
-@keyframes meteor-animation {
+/* Ripple effect circle */
+.ripple {
+  position: absolute;
+  border: 3px solid rgba(161, 127, 255, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ripple-expansion 1s ease-out forwards;
+}
+
+@keyframes ripple-expansion {
   0% {
-    transform: translateX(0) translateY(0) rotate(45deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    transform: translateX(120vw) translateY(120vh) rotate(45deg);
-    opacity: 1;
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
   }
   100% {
+    width: 300px;
+    height: 300px;
     opacity: 0;
+    transform: translate(-50%, -50%) scale(3);
   }
 }
 
@@ -73,7 +77,6 @@ nav {
   gap: 2rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
-
 nav a {
   color: #ffffff;
   text-decoration: none;
@@ -81,7 +84,6 @@ nav a {
   font-size: 1.1rem;
   transition: color 0.3s ease;
 }
-
 nav a:hover {
   color: #d1b3ff;
 }
@@ -135,29 +137,6 @@ p {
 .btn:hover {
   background: #cca6ff;
 }
-
-/* Ripple effect circle */
-.ripple {
-  position: absolute;
-  border: 3px solid rgba(161, 127, 255, 0.7);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: ripple-expansion 1s ease-out forwards;
-}
-@keyframes ripple-expansion {
-  0% {
-    width: 20px;
-    height: 20px;
-    opacity: 0.7;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    width: 300px;
-    height: 300px;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(3);
-  }
-}
 </style>
 </head>
 <body>
@@ -203,6 +182,75 @@ background.addEventListener('click', (e) => {
     ripple.remove();
   });
 });
+
+// Meteor animation with random direction and size
+const meteor = document.getElementById('meteor');
+
+function randomRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function launchMeteor() {
+  // Random size scale between 0.4 and 0.8
+  const scale = randomRange(0.4, 0.8);
+  meteor.style.width = (150 * scale) + 'px';
+  meteor.style.height = (3 * scale) + 'px';
+
+  // Random direction angle between 20 and 70 degrees
+  const angle = randomRange(20, 70);
+  meteor.style.transform = `rotate(${angle}deg)`;
+
+  // Pick random side to appear from: top (0), left(1), right(2), bottom(3)
+  const side = Math.floor(Math.random() * 4);
+  let startX, startY, endX, endY;
+
+  switch(side) {
+    case 0: // from top
+      startX = randomRange(-100, window.innerWidth+100);
+      startY = -30;
+      endX = startX + window.innerWidth * 1.5 * Math.cos(angle * Math.PI/180);
+      endY = window.innerHeight + 100;
+      break;
+    case 1: // from left
+      startX = -100;
+      startY = randomRange(-100, window.innerHeight+100);
+      endX = window.innerWidth + 100;
+      endY = startY + window.innerHeight * 1.5 * Math.sin(angle * Math.PI/180);
+      break;
+    case 2: // from right
+      startX = window.innerWidth + 100;
+      startY = randomRange(-100, window.innerHeight+100);
+      endX = -100;
+      endY = startY - window.innerHeight * 1.5 * Math.sin(angle * Math.PI/180);
+      break;
+    case 3: // from bottom
+      startX = randomRange(-100, window.innerWidth+100);
+      startY = window.innerHeight + 100;
+      endX = startX - window.innerWidth * 1.5 * Math.cos(angle * Math.PI/180);
+      endY = -100;
+      break;
+  }
+
+  meteor.style.left = startX + 'px';
+  meteor.style.top = startY + 'px';
+  meteor.style.opacity = '1';
+
+  meteor.animate([
+    { left: startX + 'px', top: startY + 'px', opacity: 1 },
+    { left: endX + 'px', top: endY + 'px', opacity: 0 }
+  ], {
+    duration: 4000,
+    easing: 'linear'
+  });
+
+  setTimeout(() => {
+    meteor.style.opacity = '0';
+  }, 4000);
+}
+
+// Launch meteor every 5 seconds
+setInterval(launchMeteor, 5000);
+launchMeteor();
 </script>
 
 </body>
