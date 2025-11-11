@@ -18,17 +18,21 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  overflow: hidden;
+  position: relative;
 }
+
 nav {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1001;
   background: rgba(17, 20, 29, 0.9);
   padding: 1rem 2rem;
   display: flex;
   gap: 2rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
+
 nav a {
   color: #ffffff;
   text-decoration: none;
@@ -36,9 +40,11 @@ nav a {
   font-size: 1.1rem;
   transition: color 0.3s ease;
 }
+
 nav a:hover {
   color: #d1b3ff;
 }
+
 main {
   max-width: 900px;
   margin: 3rem auto;
@@ -46,12 +52,16 @@ main {
   background: rgba(0,0,0,0.75);
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(209, 179, 255, 0.6);
+  position: relative;
+  z-index: 1002;
 }
+
 h1 {
   font-size: 3.8rem;
   margin-bottom: 0;
   text-shadow: 0 0 2px #a17fff;
 }
+
 h2 {
   font-weight: normal;
   font-size: 2.0rem;
@@ -60,12 +70,14 @@ h2 {
   color: #ffffff;
   text-shadow: 0 0 5px #a17fff;
 }
+
 p {
   font-size: 1.3rem;
   line-height: 1.8;
   margin-top: 1.7rem;
   max-width: 750px;
 }
+
 .btn {
   padding: 0.75rem 1.5rem;
   border: 1px solid #a47fff;
@@ -78,8 +90,33 @@ p {
   font-weight: 600;
   transition: background 0.35s ease;
 }
+
 .btn:hover {
   background: #cca6ff;
+}
+
+/* Ripple effect styles and animation */
+.ripple {
+  position: absolute;
+  border: 2px solid rgba(161, 127, 255, 0.7);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple-animation 1s ease-out forwards;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+@keyframes ripple-animation {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
 }
 </style>
 </head>
@@ -105,17 +142,20 @@ p {
   <a href="mailto:parth.v1@ahduni.edu.in" class="btn">Contact Me</a>
 </main>
 
+<script>
+// Ripple effect on body background
+document.body.addEventListener('click', function(e) {
+  let ripple = document.createElement('div');
+  ripple.className = 'ripple';
+  ripple.style.left = e.clientX + 'px';
+  ripple.style.top = e.clientY + 'px';
+  document.body.appendChild(ripple);
+
+  ripple.addEventListener('animationend', () => {
+    ripple.remove();
+  });
+});
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
