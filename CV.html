@@ -6,6 +6,7 @@
 <title>Parth Varasani - CV</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
 <style>
+  /* Basic styling and font */
   body, html {
     margin: 0;
     padding: 0;
@@ -17,6 +18,7 @@
     position: relative;
   }
 
+  /* Background container behind everything */
   #background {
     position: fixed;
     top: 0; left: 0;
@@ -25,10 +27,12 @@
     background-image: url('Black.jpg');
     background-size: cover;
     background-position: center;
-    pointer-events: none;
     z-index: 0;
-    overflow: hidden;
+    pointer-events: none;  /* Prevent blocking clicks */
+    overflow: visible;
   }
+
+  /* Meteor shape */
   #meteor {
     position: fixed;
     width: 80px;
@@ -36,10 +40,36 @@
     background: linear-gradient(90deg, white, rgba(255,255,255,0));
     box-shadow: 0 0 6px 1px white;
     opacity: 0;
-    z-index: 100;
+    z-index: 5;
     pointer-events: none;
     transform-origin: left center;
   }
+
+  /* Ripple circle style */
+  .ripple {
+    position: absolute;
+    border: 3px solid rgba(161, 127, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple-expansion 1s ease-out forwards;
+    z-index: 1;
+  }
+  @keyframes ripple-expansion {
+    0% {
+      width: 20px;
+      height: 20px;
+      opacity: 0.7;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      width: 300px;
+      height: 300px;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(3);
+    }
+  }
+
+  /* Navigation styling */
   nav {
     position: sticky;
     top: 0;
@@ -48,7 +78,7 @@
     padding: 1rem 2rem;
     display: flex;
     gap: 2rem;
-    z-index: 10000;
+    z-index: 10;
   }
   nav a {
     color: #fff;
@@ -61,6 +91,8 @@
     color: #d1b3ff;
     text-decoration: underline;
   }
+
+  /* Main container */
   main {
     position: relative;
     max-width: 900px;
@@ -70,8 +102,10 @@
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(209, 179, 255, 0.9);
     color: #f0f0f0;
-    z-index: 10001;
+    z-index: 11;
   }
+
+  /* Typography */
   h1 {
     font-size: 3.6rem;
     color: #a47fff;
@@ -134,27 +168,6 @@
     display: table;
     clear: both;
   }
-  .ripple {
-    position: absolute;
-    border: 3px solid rgba(161, 127, 255, 0.7);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: ripple-expansion 1s ease-out forwards;
-  }
-  @keyframes ripple-expansion {
-    0% {
-      width: 20px;
-      height: 20px;
-      opacity: 0.7;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    100% {
-      width: 300px;
-      height: 300px;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(3);
-    }
-  }
 </style>
 </head>
 <body>
@@ -164,7 +177,7 @@
 
 <nav>
   <a href="index.html">Home</a>
-  <a href="CV.html" class="active">CV</a>
+  <a href="cv.html" class="active">CV</a>
   <a href="publications.html">Publications</a>
   <a href="books.html">Books</a>
   <a href="people.html">People</a>
@@ -338,4 +351,3 @@ launchMeteor();
 
 </body>
 </html>
-
