@@ -9,13 +9,14 @@
   body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
     font-family: 'EB Garamond', serif;
-    color: #ffffff;
-    overflow: hidden;
-    position: relative;
     background-color: #0b0c1c;
+    color: #fff;
+    min-height: 100vh;
+    overflow-y: auto;
+    position: relative;
   }
+
   #background {
     position: fixed;
     top: 0; left: 0;
@@ -25,7 +26,7 @@
     background-size: cover;
     background-position: center;
     z-index: 0;
-    overflow: hidden;
+    pointer-events: none;
   }
   nav {
     position: sticky;
@@ -35,10 +36,10 @@
     padding: 1rem 2rem;
     display: flex;
     gap: 2rem;
-    z-index: 1000;
+    z-index: 10000;
   }
   nav a {
-    color: #ffffff;
+    color: #fff;
     font-weight: bold;
     font-size: 1.1rem;
     text-decoration: none;
@@ -57,7 +58,7 @@
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(209, 179, 255, 0.9);
     color: #f0f0f0;
-    z-index: 1001;
+    z-index: 1000;
   }
   h1 {
     font-size: 3.6rem;
@@ -88,7 +89,7 @@
   ul {
     list-style-type: disc;
     padding-left: 1.5em;
-    color: #ffffff;
+    color: #fff;
   }
   ul ul {
     list-style-type: circle;
@@ -121,6 +122,28 @@
     content: "";
     display: table;
     clear: both;
+  }
+  /* Ripple circle style */
+  .ripple {
+    position: absolute;
+    border: 3px solid rgba(161, 127, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple-animation 1s ease-out forwards;
+  }
+  @keyframes ripple-animation {
+    0% {
+      width: 20px;
+      height: 20px;
+      opacity: 0.7;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      width: 300px;
+      height: 300px;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(3);
+    }
   }
 </style>
 </head>
@@ -185,7 +208,17 @@
     <li>Member of Big-Bang Astronomy Club, Rajkot (2014–2019).</li>
   </ul>
 </section>
-  
+
+<section>
+  <h2>Key Skills</h2>
+  <ul>
+    <li>Mathematica</li>
+    <li>Python</li>
+    <li>Topcat and FITS data analysis</li>
+    <li>PSpice and Elecircuit software</li>
+  </ul>
+</section>
+
 <section>
   <h2>Research Interests</h2>
   <ul>
