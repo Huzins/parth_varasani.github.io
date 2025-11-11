@@ -5,85 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Parth Varasani - Astrophysics PhD</title>
 <style>
-  /* Basic styles here, same as before */
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: radial-gradient(circle, #000000, #04041d);
-    color: #eee;
-  }
-  nav {
-    background: #11141d;
-    padding: 1rem 2rem;
-    display: flex;
-    gap: 2rem;
-  }
-  nav a {
-    color: #bbb;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-  nav a:hover {
-    color: #a67aff;
-  }
-  main {
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 0 1rem;
-  }
-  h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0;
-    color: #9b75ff;
-  }
-  h2 {
-    font-weight: normal;
-    font-size: 1.7rem;
-    margin-top: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-top: 1.5rem;
-    max-width: 700px;
-  }
-  .btn {
-    padding: 0.6rem 1.2rem;
-    background: #8d79ff;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-    margin-top: 2rem;
-    display: inline-block;
-  }
-
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #eee;
-  background-image: url('Black.jpg'); /* your image file name */
-  background-size: cover;        /* cover full viewport */
-  background-position: center;   /* center the image */
-  background-repeat: no-repeat;  /* no repeat */
-  background-attachment: fixed;  /* fixed during scroll */
-  }
+  background-color: #000; /* fallback */
+  background-image: url('Black.jpg'); /* your wallpaper image filename */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
+nav {
+  background: rgba(17, 20, 29, 0.8); /* semi-transparent for readability */
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
 
+nav a {
+  color: #bbb;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #a67aff;
+}
+
+main {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(166, 122, 255, 0.4);
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0;
+  color: #9b75ff;
+  text-shadow: 0 0 10px #a67aff;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 1.7rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #d3b3ff;
+  text-shadow: 0 0 5px #9b75ff;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-top: 1.5rem;
+  max-width: 700px;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  background: #8d79ff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 2rem;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #a67aff;
+}
 </style>
 </head>
 <body>
-  
-<!-- <video autoplay muted loop id="bgVideo">
-  <source src="black-hole.3840x2160.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video> -->
 
 <nav>
   <a href="index.html">Home</a>
@@ -105,12 +115,3 @@ body, html {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
