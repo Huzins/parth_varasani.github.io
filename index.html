@@ -16,20 +16,16 @@
     margin: 2rem auto;
     max-width: 900px;
   }
-
   nav {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
+    z-index: 1000;
     background: rgba(17, 20, 29, 0.9);
     padding: 1rem 2rem;
     display: flex;
     gap: 2rem;
-    z-index: 1000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.6);
   }
-
   nav a {
     color: #ffffff;
     text-decoration: none;
@@ -37,44 +33,24 @@
     font-size: 1.1rem;
     transition: color 0.3s ease;
   }
-
   nav a:hover {
     color: #d1b3ff;
   }
-
-  body {
-    padding-top: 60px; /* to prevent content hidden under nav */
+  h1, h2, h3, h4, h5, h6, p, a, li, span, div, section, ul {
+    font-family: 'EB Garamond', serif;
+    color: #ffffff;
   }
-
-  main {
-    background: rgba(0,0,0,0.75);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(209, 179, 255, 0.6);
-    padding: 2rem 1.5rem;
-  }
-
   h1, h2 {
-    color: #a47fff;
     border-bottom: 2px solid #a47fff;
     padding-bottom: 0.2rem;
+    color: #a47fff;
   }
   h1 {
     margin-bottom: 0.1rem;
-    font-size: 3.5rem;
-  }
-  h2 {
-    font-size: 2rem;
-    margin-top: 1.5rem;
-  }
-
-  a {
-    color: #ffffff;
-    text-decoration: none;
   }
   a:hover {
     text-decoration: underline;
   }
-
   section {
     margin-bottom: 2.5rem;
   }
@@ -107,7 +83,6 @@
     margin-left: 1.5em;
     color: #ffffff;
   }
-
   footer {
     margin-top: 3rem;
     border-top: 1px solid #444;
