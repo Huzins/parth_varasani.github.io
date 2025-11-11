@@ -16,6 +16,28 @@
     margin: 2rem auto;
     max-width: 900px;
   }
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(17, 20, 29, 0.9);
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    letter-spacing: normal;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #d1b3ff;
+  }
   h1, h2, h3, h4, h5, h6, p, a, li, span, div, section, ul {
     font-family: 'EB Garamond', serif;
     color: #ffffff;
@@ -27,10 +49,6 @@
   }
   h1 {
     margin-bottom: 0.1rem;
-  }
-  a {
-    color: #ffffff;
-    text-decoration: none;
   }
   a:hover {
     text-decoration: underline;
@@ -78,6 +96,7 @@
 </style>
 </head>
 <body>
+
 <nav>
   <a href="index.html">Home</a>
   <a href="cv.html">CV</a>
@@ -85,6 +104,8 @@
   <a href="books.html">Books</a>
   <a href="people.html">People</a>
 </nav>
+
+<main>
 
 <h1>Parth Varasani</h1>
 <div class="contact">
@@ -163,6 +184,7 @@
   <center>Last updated: November 12, 2025</center>
 </footer>
 
+</main>
+
 </body>
 </html>
-
