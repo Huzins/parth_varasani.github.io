@@ -16,6 +16,8 @@ body, html {
   overflow-y: auto;
   position: relative;
 }
+
+/* Background div with pointer-events: auto for clicks */
 #background {
   position: fixed;
   top: 0; left: 0;
@@ -24,10 +26,13 @@ body, html {
   background-image: url('Black.jpg');
   background-size: cover;
   background-position: center;
-  pointer-events: none;
   z-index: 0;
-  overflow: hidden;
+  pointer-events: auto;
+  overflow: visible;
+  user-select: none;
 }
+
+/* Meteor shape */
 #meteor {
   position: fixed;
   width: 80px;
@@ -39,12 +44,15 @@ body, html {
   pointer-events: none;
   transform-origin: left center;
 }
+
+/* Ripple effect style */
 .ripple {
   position: absolute;
   border: 3px solid rgba(161, 127, 255, 0.7);
   border-radius: 50%;
   pointer-events: none;
   animation: ripple-expansion 1s ease-out forwards;
+  z-index: 1;
 }
 @keyframes ripple-expansion {
   0% {
@@ -60,6 +68,8 @@ body, html {
     transform: translate(-50%, -50%) scale(3);
   }
 }
+
+/* Navigation bar styling */
 nav {
   position: sticky;
   top: 0;
@@ -80,6 +90,8 @@ nav a {
 nav a:hover {
   color: #d1b3ff;
 }
+
+/* Main content styling */
 main {
   max-width: 900px;
   margin: 3rem auto;
@@ -90,11 +102,13 @@ main {
   position: relative;
   z-index: 1002;
 }
+
 h1 {
   font-size: 3.8rem;
   margin-bottom: 0;
   text-shadow: 0 0 2px #a17fff;
 }
+
 h2 {
   font-weight: normal;
   font-size: 2.0rem;
@@ -103,12 +117,14 @@ h2 {
   color: #ffffff;
   text-shadow: 0 0 5px #a17fff;
 }
+
 p {
   font-size: 1.3rem;
   line-height: 1.8;
   margin-top: 1.7rem;
   max-width: 750px;
 }
+
 .btn {
   padding: 0.75rem 1.5rem;
   border: 1px solid #a47fff;
@@ -133,7 +149,7 @@ p {
 
 <nav>
   <a href="index.html" class="active">Home</a>
-  <a href="CV.html">CV</a>
+  <a href="cv.html">CV</a>
   <a href="publications.html">Publications</a>
   <a href="books.html">Books</a>
   <a href="people.html">People</a>
@@ -152,6 +168,7 @@ p {
 </main>
 
 <script>
+// Ripple effect on background
 const background = document.getElementById('background');
 background.addEventListener('click', (e) => {
   const ripple = document.createElement('div');
@@ -165,10 +182,13 @@ background.addEventListener('click', (e) => {
   });
 });
 
+// Meteor animation with random direction and size
 const meteor = document.getElementById('meteor');
+
 function randomRange(min, max) {
   return Math.random() * (max - min) + min;
 }
+
 function launchMeteor() {
   const scale = randomRange(0.4, 0.8);
   meteor.style.width = (150 * scale) + 'px';
@@ -223,6 +243,7 @@ function launchMeteor() {
     meteor.style.opacity = '0';
   }, 4000);
 }
+
 setInterval(launchMeteor, 5000);
 launchMeteor();
 </script>
