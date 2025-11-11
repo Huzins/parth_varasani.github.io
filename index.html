@@ -3,127 +3,171 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Parth Varasani - Home</title>
+<title>Parth Varasani - CV</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
 <style>
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'EB Garamond', serif;
-  color: #ffffff;
-  background-color: #000000;
-  overflow-y: auto;
-  position: relative;
-}
-#background {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('Black.jpg');
-  background-size: cover;
-  background-position: center;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-#meteor {
-  position: fixed;
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, white, rgba(255,255,255,0));
-  box-shadow: 0 0 6px 1px white;
-  opacity: 0;
-  z-index: 100;
-  pointer-events: none;
-  transform-origin: left center;
-}
-.ripple {
-  position: absolute;
-  border: 3px solid rgba(161, 127, 255, 0.7);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: ripple-expansion 1s ease-out forwards;
-}
-@keyframes ripple-expansion {
-  0% {
-    width: 20px;
-    height: 20px;
-    opacity: 0.7;
-    transform: translate(-50%, -50%) scale(1);
+  /* Basic styling and font */
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'EB Garamond', serif;
+    background-color: #0b0c1c;
+    color: #fff;
+    min-height: 100vh;
+    overflow-y: auto;
+    position: relative;
   }
-  100% {
-    width: 300px;
-    height: 300px;
+
+  /* Background container behind everything */
+  #background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('Black.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    pointer-events: none;  /* Prevent blocking clicks */
+    overflow: visible;
+  }
+
+  /* Meteor shape */
+  #meteor {
+    position: fixed;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, white, rgba(255,255,255,0));
+    box-shadow: 0 0 6px 1px white;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(3);
+    z-index: 5;
+    pointer-events: none;
+    transform-origin: left center;
   }
-}
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1001;
-  background: rgba(17, 20, 29, 0.9);
-  padding: 1rem 2rem;
-  display: flex;
-  gap: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
-}
-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
-}
-nav a:hover {
-  color: #d1b3ff;
-}
-main {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 2rem 1.5rem;
-  background: rgba(0,0,0,0.75);
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(209, 179, 255, 0.6);
-  position: relative;
-  z-index: 1002;
-}
-h1 {
-  font-size: 3.8rem;
-  margin-bottom: 0;
-  text-shadow: 0 0 2px #a17fff;
-}
-h2 {
-  font-weight: normal;
-  font-size: 2.0rem;
-  margin-top: 0.5rem;
-  letter-spacing: 2.5px;
-  color: #ffffff;
-  text-shadow: 0 0 5px #a17fff;
-}
-p {
-  font-size: 1.3rem;
-  line-height: 1.8;
-  margin-top: 1.7rem;
-  max-width: 750px;
-}
-.btn {
-  padding: 0.75rem 1.5rem;
-  border: 1px solid #a47fff;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  text-decoration: none;
-  margin-top: 2.5rem;
-  display: inline-block;
-  font-weight: 600;
-  transition: background 0.35s ease;
-}
-.btn:hover {
-  background: #cca6ff;
-}
+
+  /* Ripple circle style */
+  .ripple {
+    position: absolute;
+    border: 3px solid rgba(161, 127, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple-expansion 1s ease-out forwards;
+    z-index: 1;
+  }
+  @keyframes ripple-expansion {
+    0% {
+      width: 20px;
+      height: 20px;
+      opacity: 0.7;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      width: 300px;
+      height: 300px;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(3);
+    }
+  }
+
+  /* Navigation styling */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(17, 20, 29, 0.95);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 2rem;
+    z-index: 10;
+  }
+  nav a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  nav a:hover, nav a.active {
+    color: #d1b3ff;
+    text-decoration: underline;
+  }
+
+  /* Main container */
+  main {
+    position: relative;
+    max-width: 900px;
+    margin: 4rem auto 3rem auto;
+    background: rgba(0,0,0,0.75);
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(209, 179, 255, 0.9);
+    color: #f0f0f0;
+    z-index: 11;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 3.6rem;
+    color: #a47fff;
+    margin-bottom: 0.3rem;
+    border-bottom: 3px solid #a47fff;
+    padding-bottom: 0.3rem;
+  }
+  .contact {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+  .contact a {
+    color: #d1b3ff;
+    margin-right: 1.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+    color: #a47fff;
+    border-bottom: 2px solid #a47fff;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+    color: #fff;
+  }
+  ul ul {
+    list-style-type: circle;
+    padding-left: 1.5em;
+  }
+  li {
+    margin-bottom: 0.8rem;
+    font-size: 1.15rem;
+  }
+  .job-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .job-duration {
+    float: right;
+    font-style: italic;
+    color: #bbb;
+  }
+  .nested-list {
+    margin-left: 2rem;
+  }
+  footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #777;
+  }
+  li::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 </style>
 </head>
 <body>
@@ -132,43 +176,120 @@ p {
 <div id="meteor"></div>
 
 <nav>
-  <a href="index.html" class="active">Home</a>
-  <a href="CV.html">CV</a>
+  <a href="index.html">Home</a>
+  <a href="cv.html" class="active">CV</a>
   <a href="publications.html">Publications</a>
   <a href="books.html">Books</a>
   <a href="people.html">People</a>
 </nav>
 
 <main>
-  <h1>Parth Varasani</h1>
-  <h2>PhD Student - Astrophysics & Cosmology</h2>
+
+<h1>Parth Varasani</h1>
+<div class="contact">
+  <a href="mailto:parth.v1@ahduni.edu.in">✉ parth.v1@ahduni.edu.in</a>
+  <a href="tel:+917623950278">☏ +91 76239 50278</a>
+</div>
+
+<section>
+  <h2>Summary</h2>
   <p>
-   I am a PhD student at the International Centre for Space and Cosmology (ICSC), Ahmedabad University, 
-   specializing in black hole physics, gravitational waves, and primordial black hole research. This website presents my academic projects,
-   publications, and contributions to theoretical astrophysics and cosmology. Dive into the latest research insights and explore my work in understanding 
-   the nature of the universe.
+    I am a third-year PhD student at the International Centre for Space and Cosmology (ICSC) - Ahmedabad University under the supervision of Prof. Pankaj Joshi. I am working in Theoretical Astrophysics.
   </p>
-  <a href="mailto:parth.v1@ahduni.edu.in" class="btn">Contact Me</a>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+  <ul>
+    <li><span class="job-title">Instructor, MAT123(Calculus), Ahmedabad University</span> <span class="job-duration">Oct 2024 – Jan 2025</span></li>
+    <li><span class="job-title">JEE(Advanced) Expert, Physics Wallah</span> <span class="job-duration">Jul 2022 – Dec 2022</span></li>
+    <li><span class="job-title">Advanced Physics Expert, Chegg Inc. and Bartleby</span> <span class="job-duration">Mar 2021 – Jan 2023</span></li>
+    <li><span class="job-title">Physics Teacher, The Kota Culture Science Academy</span> <span class="job-duration">Jan 2020 – Mar 2021</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <ul>
+    <li><strong>PhD in Theoretical Astrophysics</strong>, International Centre for Space and Cosmology (ICSC), Ahmedabad University (Aug 2023 – Present)</li>
+    <li><strong>MSc Physics</strong> — First Class with Distinction, Saurashtra University, Rajkot (Jul 2017 – May 2019)</li>
+    <li><strong>BSc Physics</strong> — First Class with Distinction, Christ College, Rajkot (Apr 2014 – May 2017)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Achievements & Conference Attended</h2>
+  <ul>
+    <li>Qualified GATE-2023 and GATE-2022.</li>
+    <li>Qualified GSET exam for Assistant Professor in Gujarat, 2021.</li>
+    <li>Attended "Through the looking GLASS" webinar by <strong>Space Telescope Science Institute</strong>, 2021.</li>
+    <li>International conference by <strong>Coalesce Research Group</strong>, 2022.</li>
+    <li>National conference, Department of Nanoscience, Saurashtra University, 2018.</li>
+    <li>Poster awards at International Science Symposium, Christ College, 2017 & 2016.</li>
+    <li>First prize, State Level Science Symposium, Sarvodaya College, Rajkot, 2016.</li>
+    <li>Six-month workshop in applied electronics, J.J. Institute of Technology, 2017.</li>
+    <li>Conference on Amal Kumar Raychaudhuri Centenary, IMSC-Chennai, 2023.</li>
+    <li>Member of Big-Bang Astronomy Club, Rajkot (2014–2019).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Key Skills</h2>
+  <ul>
+    <li>Mathematica</li>
+    <li>Python</li>
+    <li>Topcat and FITS data analysis</li>
+    <li>PSpice and Elecircuit software</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Research Interests</h2>
+  <ul>
+    <li>Gravitational collapse, conformal maps in holographic gravity, gravitational waves, and dynamics of high-energy particles in accretion disks.</li>
+    <li>Current work:</li>
+    <ul class="nested-list">
+      <li>Gravitational collapse in different inhomogeneous mass profiles</li>
+      <li>Shadow without photon sphere in regularised geometry</li>
+      <li>Gravitational waves from horizonless compact objects</li>
+      <li>Calabi-Yau manifold emergence from scattering horizonless compact objects</li>
+    </ul>
+    <li>Also interested in quantum gravity to understand regions near gravitational singularities.</li>
+  </ul>
+</section>
+
+<footer>
+  <center>Last updated: November 12, 2025</center>
+</footer>
+
 </main>
 
 <script>
+// Ripple effect on background
 const background = document.getElementById('background');
+
 background.addEventListener('click', (e) => {
   const ripple = document.createElement('div');
   ripple.className = 'ripple';
+
   const rect = background.getBoundingClientRect();
   ripple.style.left = `${e.clientX - rect.left}px`;
   ripple.style.top = `${e.clientY - rect.top}px`;
+
   background.appendChild(ripple);
+
   ripple.addEventListener('animationend', () => {
     ripple.remove();
   });
 });
 
+// Meteor animation with random direction and size
 const meteor = document.getElementById('meteor');
+
 function randomRange(min, max) {
   return Math.random() * (max - min) + min;
 }
+
 function launchMeteor() {
   const scale = randomRange(0.4, 0.8);
   meteor.style.width = (150 * scale) + 'px';
@@ -223,10 +344,10 @@ function launchMeteor() {
     meteor.style.opacity = '0';
   }, 4000);
 }
+
 setInterval(launchMeteor, 5000);
 launchMeteor();
 </script>
 
 </body>
 </html>
-
