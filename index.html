@@ -18,7 +18,7 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
 }
 
@@ -95,32 +95,23 @@ p {
   background: #cca6ff;
 }
 
-/* Ripple effect styles and animation */
-.ripple {
-  position: absolute;
-  border: 2px solid rgba(161, 127, 255, 0.7);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: ripple-animation 1s ease-out forwards;
-  pointer-events: none;
-  z-index: 1000;
+.wiggle-background {
+  animation: wiggle 0.6s ease;
+  animation-iteration-count: 1;
 }
 
-@keyframes ripple-animation {
-  0% {
-    width: 20px;
-    height: 20px;
-    opacity: 0.6;
-  }
-  100% {
-    width: 300px;
-    height: 300px;
-    opacity: 0;
-  }
+@keyframes wiggle {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  15% { transform: translate(-5px, 5px) rotate(-3deg); }
+  30% { transform: translate(5px, -5px) rotate(3deg); }
+  45% { transform: translate(-5px, 5px) rotate(-3deg); }
+  60% { transform: translate(5px, -5px) rotate(3deg); }
+  75% { transform: translate(-5px, 5px) rotate(-3deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
 }
 </style>
 </head>
-<body>
+<body id="body">
 
 <nav>
   <a href="index.html">Home</a>
@@ -143,17 +134,14 @@ p {
 </main>
 
 <script>
-// Ripple effect on body background
-document.body.addEventListener('click', function(e) {
-  let ripple = document.createElement('div');
-  ripple.className = 'ripple';
-  ripple.style.left = e.clientX + 'px';
-  ripple.style.top = e.clientY + 'px';
-  document.body.appendChild(ripple);
+const body = document.getElementById('body');
 
-  ripple.addEventListener('animationend', () => {
-    ripple.remove();
-  });
+body.addEventListener('click', () => {
+  if(body.classList.contains('wiggle-background')) return; // Prevent multiple triggers
+  body.classList.add('wiggle-background');
+  setTimeout(() => {
+    body.classList.remove('wiggle-background');
+  }, 600); // Duration equal to animation duration
 });
 </script>
 
