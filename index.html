@@ -12,10 +12,10 @@ body, html {
   height: 100%;
   font-family: 'EB Garamond', serif;
   color: #ffffff;
-  overflow: hidden;
+  background-color: #000000;
+  overflow-y: auto;
   position: relative;
 }
-
 #background {
   position: fixed;
   top: 0; left: 0;
@@ -24,10 +24,45 @@ body, html {
   background-image: url('Black.jpg');
   background-size: cover;
   background-position: center;
+  pointer-events: none;
   z-index: 0;
   overflow: hidden;
 }
 
+/* Meteor styles */
+#meteor {
+  position: fixed;
+  top: -30px;
+  left: -100px;
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, white, rgba(255,255,255,0));
+  box-shadow: 0 0 10px 2px white;
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
+  animation: meteor-animation 5s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes meteor-animation {
+  0% {
+    transform: translateX(0) translateY(0) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(120vw) translateY(120vh) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Navigation */
 nav {
   position: sticky;
   top: 0;
@@ -51,14 +86,15 @@ nav a:hover {
   color: #d1b3ff;
 }
 
+/* Main content styling */
 main {
-  position: relative;
   max-width: 900px;
   margin: 3rem auto;
   padding: 2rem 1.5rem;
   background: rgba(0,0,0,0.75);
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(209, 179, 255, 0.6);
+  position: relative;
   z-index: 1002;
 }
 
@@ -96,20 +132,18 @@ p {
   font-weight: 600;
   transition: background 0.35s ease;
 }
-
 .btn:hover {
   background: #cca6ff;
 }
 
-/* Ripple effect circle on background container */
+/* Ripple effect circle */
 .ripple {
   position: absolute;
   border: 3px solid rgba(161, 127, 255, 0.7);
   border-radius: 50%;
-  pointer-events: auto;
-  animation: ripple-expansion 1.5s ease-out forwards;
+  pointer-events: none;
+  animation: ripple-expansion 1s ease-out forwards;
 }
-
 @keyframes ripple-expansion {
   0% {
     width: 20px;
@@ -129,10 +163,11 @@ p {
 <body>
 
 <div id="background"></div>
+<div id="meteor"></div>
 
 <nav>
-  <a href="index.html">Home</a>
-  <a href="CV.html">CV</a>
+  <a href="index.html" class="active">Home</a>
+  <a href="cv.html">CV</a>
   <a href="publications.html">Publications</a>
   <a href="books.html">Books</a>
   <a href="people.html">People</a>
@@ -147,25 +182,23 @@ p {
    publications, and contributions to theoretical astrophysics and cosmology. Dive into the latest research insights and explore my work in understanding 
    the nature of the universe.
   </p>
+  <a href="mailto:parth.v1@ahduni.edu.in" class="btn">Contact Me</a>
 </main>
 
 <script>
+// Ripple effect on background
 const background = document.getElementById('background');
 
 background.addEventListener('click', (e) => {
-  // Create ripple
   const ripple = document.createElement('div');
   ripple.className = 'ripple';
 
-  // Position ripple at click coordinates relative to background container
   const rect = background.getBoundingClientRect();
   ripple.style.left = `${e.clientX - rect.left}px`;
   ripple.style.top = `${e.clientY - rect.top}px`;
 
-  // Add ripple to background container
   background.appendChild(ripple);
 
-  // Remove ripple after animation completes
   ripple.addEventListener('animationend', () => {
     ripple.remove();
   });
@@ -174,7 +207,3 @@ background.addEventListener('click', (e) => {
 
 </body>
 </html>
-
-
-
-
